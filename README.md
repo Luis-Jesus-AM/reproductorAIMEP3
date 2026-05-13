@@ -33,4 +33,8 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 
 - **No incluirá servicios de streaming online:** El reproductor estará diseñado únicamente para música almacenada en el dispositivo del usuario.
 - **No permitirá la descarga ilegal de música:** Se respetarán los derechos de autor y las normativas legales vigentes.
-- **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz.
+- **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz
+
+
+<img width="1200" height="1600" alt="WhatsApp Image 2026-05-13 at 12 37 28 PM" src="https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05" />
+
