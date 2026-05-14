@@ -36,5 +36,37 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 - **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz
 
 
+# 🎵 Reproductor Académico
+
 <img src="https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05" width="250" height="250" alt="Captura del reproductor">
+
+---
+
+## 👤 Información del Estudiante
+
+### Datos
+Nombre:  _Antonio Marin Luis Jesus_
+
+Correo: _23308060610060@cetis61.edu.mx_
+
+N.Control: _23308060610060_
+
+### Datos
+Nombre: _Burciaga Renteria Dana Paola_
+
+Correo: _23308060610289@cetis61.edu.mx_
+
+N.Control: _23308060610289_
+
+---
+
+## 📚 Información Académica
+### Semestre
+_6° Semestre_
+
+### Materia
+_Programación_
+
+
+
 
