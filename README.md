@@ -38,7 +38,7 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 
 # 🎵 Reproductor Académico
 
-![Captura del reproductor](https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05)
+<img src="https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05" width="250" height="250" alt="Captura del reproductor">
 
 ---
 
