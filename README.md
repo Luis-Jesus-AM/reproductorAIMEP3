@@ -45,18 +45,18 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 ## 👤 Información del Estudiante
 
 ### Datos
-_Antonio Marin Luis Jesus_
+Nombre:  _Antonio Marin Luis Jesus_
 
-_23308060610060@cetis61.edu.mx_
+Correo: _23308060610060@cetis61.edu.mx_
 
-_23308060610060_
+N.Control: _23308060610060_
 
 ### Datos
-_Burciaga Renteria Dana Paola_
+Nombre: _Burciaga Renteria Dana Paola_
 
-_23308060610289@cetis61.edu.mx_
+Correo: _23308060610289@cetis61.edu.mx_
 
-_23308060610289_
+N.Control: _23308060610289_
 
 ---
 
