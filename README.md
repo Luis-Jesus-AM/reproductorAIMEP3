@@ -45,28 +45,27 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 ## 👤 Información del Estudiante
 
 ### Nombre
-_Ingrese el nombre completo del estudiante_
+_Antonio Marin Luis Jesus_
+_Burciaga Renteria Dana Paola_
 
 ### Correo
-_ingrese@correo.com_
+_23308060610060@cetis61.edu.mx_
+_23308060610289@cetis61.edu.mx_
+
 
 ### Número de Control
-_2230805123_
+_23308060610060_
+_23308060610289_
 
 ---
 
 ## 📚 Información Académica
-
-### Carrera
-_Ingeniería en Sistemas Computacionales_
-
 ### Semestre
 _6° Semestre_
 
 ### Materia
-_Programación Web_
+_Programación_
 
-### Institución
-_Instituto Tecnológico_
+
 
 
