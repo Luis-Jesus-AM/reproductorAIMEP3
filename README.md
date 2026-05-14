@@ -36,5 +36,37 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 - **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz
 
 
-<img src="https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05" width="250" height="250" alt="Captura del reproductor">
+# 🎵 Reproductor Académico
+
+![Captura del reproductor](https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05)
+
+---
+
+## 👤 Información del Estudiante
+
+### Nombre
+_Ingrese el nombre completo del estudiante_
+
+### Correo
+_ingrese@correo.com_
+
+### Número de Control
+_2230805123_
+
+---
+
+## 📚 Información Académica
+
+### Carrera
+_Ingeniería en Sistemas Computacionales_
+
+### Semestre
+_6° Semestre_
+
+### Materia
+_Programación Web_
+
+### Institución
+_Instituto Tecnológico_
+
 
