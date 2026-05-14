@@ -46,15 +46,18 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 
 ### Nombre
 _Antonio Marin Luis Jesus_
+
 _Burciaga Renteria Dana Paola_
 
 ### Correo
 _23308060610060@cetis61.edu.mx_
+
 _23308060610289@cetis61.edu.mx_
 
 
 ### Número de Control
 _23308060610060_
+
 _23308060610289_
 
 ---
