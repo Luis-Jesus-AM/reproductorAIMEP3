@@ -1,16 +1,20 @@
+import bcrypt
 from datetime import datetime
-from model.databasemodel import Database  
+from model.databasemodel import Database   # corregido
 
 class UserController:
     def __init__(self):
         self.db = Database()
 
     def registrar_usuario(self, nombre, apellido, email, password):
+        # encriptar contraseña antes de guardar
+        salt = bcrypt.gensalt()
+        hashed_pw = bcrypt.hashpw(password.encode("utf-8"), salt).decode("utf-8")
+
         sql = """INSERT INTO usuarios (nombre, apellido, email, password, fecha_registro)
                  VALUES (%s, %s, %s, %s, %s)"""
-        return self.db.execute_query(sql, (nombre, apellido, email, password, datetime.now()))
+        return self.db.execute_query(sql, (nombre, apellido, email, hashed_pw, datetime.now()))
 
-    
     def obtener_usuario_por_id(self, id_usuario):
         sql = "SELECT * FROM usuarios WHERE id_usuario=%s"
         return self.db.execute_query(sql, (id_usuario,), fetchone=True)
@@ -20,10 +24,12 @@ class UserController:
         return self.db.execute_query(sql, (email,), fetchone=True)
 
     def validar_login(self, email, password):
-        sql = "SELECT * FROM usuarios WHERE email=%s AND password=%s"
-        return self.db.execute_query(sql, (email, password), fetchone=True)
+        # traer usuario por email
+        user = self.obtener_usuario_por_email(email)
+        if user and bcrypt.checkpw(password.encode("utf-8"), user["password"].encode("utf-8")):
+            return user
+        return None
 
-   
     def actualizar_ultimo_acceso(self, id_usuario):
         sql = "UPDATE usuarios SET ultimo_acceso=%s WHERE id_usuario=%s"
         return self.db.execute_query(sql, (datetime.now(), id_usuario))
@@ -40,8 +46,10 @@ class UserController:
             campos.append("email=%s")
             valores.append(email)
         if password:
+            salt = bcrypt.gensalt()
+            hashed_pw = bcrypt.hashpw(password.encode("utf-8"), salt).decode("utf-8")
             campos.append("password=%s")
-            valores.append(password)
+            valores.append(hashed_pw)
 
         if campos:
             sql = f"UPDATE usuarios SET {', '.join(campos)} WHERE id_usuario=%s"

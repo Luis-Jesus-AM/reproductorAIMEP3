@@ -12,79 +12,67 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 -- Volcando estructura de base de datos para reproducto_p3
 CREATE DATABASE IF NOT EXISTS `reproducto_p3` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `reproducto_p3`;
--- Volcando estructura para tabla reproducto_p3.album
-CREATE TABLE IF NOT EXISTS `album` (
-  `id_album` int NOT NULL DEFAULT (0),
-  `titulo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `año_lanzamiento` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_artista` int NOT NULL DEFAULT (0),
-  PRIMARY KEY (`id_album`) USING BTREE,
-  KEY `FK_artista` (`id_artista`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.album: 0 rows
-DELETE FROM `album`;
-/*!40000 ALTER TABLE `album` DISABLE KEYS */;
-/*!40000 ALTER TABLE `album` ENABLE KEYS */;
+
 -- Volcando estructura para tabla reproducto_p3.artista
 CREATE TABLE IF NOT EXISTS `artista` (
-  `id_artista` int NOT NULL,
-  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `nacionalidad` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `id_artista` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nacionalidad` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_artista`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.artista: 0 rows
-DELETE FROM `artista`;
-/*!40000 ALTER TABLE `artista` DISABLE KEYS */;
-/*!40000 ALTER TABLE `artista` ENABLE KEYS */;
--- Volcando estructura para tabla reproducto_p3.cancion
-CREATE TABLE IF NOT EXISTS `cancion` (
-  `id_cancion` int NOT NULL,
-  `titulo` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `duracion_segundos` int DEFAULT NULL,
-  `ruta_archivo` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_album` int DEFAULT NULL,
-  `id_genero` int NOT NULL,
-  PRIMARY KEY (`id_cancion`),
-  KEY `FK_album` (`id_album`),
-  KEY `FK_genero` (`id_genero`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.cancion: 0 rows
-DELETE FROM `cancion`;
-/*!40000 ALTER TABLE `cancion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cancion` ENABLE KEYS */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando estructura para tabla reproducto_p3.album
+CREATE TABLE IF NOT EXISTS `album` (
+  `id_album` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `año_lanzamiento` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_artista` INT NOT NULL,
+  PRIMARY KEY (`id_album`),
+  FOREIGN KEY (`id_artista`) REFERENCES `artista`(`id_artista`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Volcando estructura para tabla reproducto_p3.genero
 CREATE TABLE IF NOT EXISTS `genero` (
-  `id_genero` int NOT NULL,
-  `nombre` int NOT NULL,
+  `id_genero` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_genero`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.genero: 0 rows
-DELETE FROM `genero`;
-/*!40000 ALTER TABLE `genero` DISABLE KEYS */;
-/*!40000 ALTER TABLE `genero` ENABLE KEYS */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando estructura para tabla reproducto_p3.cancion
+CREATE TABLE IF NOT EXISTS `cancion` (
+  `id_cancion` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `duracion_segundos` INT DEFAULT NULL,
+  `ruta_archivo` VARCHAR(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_album` INT DEFAULT NULL,
+  `id_genero` INT NOT NULL,
+  PRIMARY KEY (`id_cancion`),
+  FOREIGN KEY (`id_album`) REFERENCES `album`(`id_album`),
+  FOREIGN KEY (`id_genero`) REFERENCES `genero`(`id_genero`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Volcando estructura para tabla reproducto_p3.playlist
 CREATE TABLE IF NOT EXISTS `playlist` (
-  `id_playlist` int NOT NULL,
-  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_creacion` timestamp NOT NULL,
-  PRIMARY KEY (`id_playlist`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.playlist: 0 rows
-DELETE FROM `playlist`;
-/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
+  `id_playlist` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha_creacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_playlist`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Volcando estructura para tabla reproducto_p3.playlist_cancion
 CREATE TABLE IF NOT EXISTS `playlist_cancion` (
-  `id_playlist` int NOT NULL,
-  `id_cancion` int NOT NULL,
-  `orden` int NOT NULL,
-  KEY `FK_playlist` (`id_playlist`),
-  KEY `FK_cancion` (`id_cancion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Volcando datos para la tabla reproducto_p3.playlist_cancion: 0 rows
+  `id_playlist` INT NOT NULL,
+  `id_cancion` INT NOT NULL,
+  `orden` INT NOT NULL,
+  FOREIGN KEY (`id_playlist`) REFERENCES `playlist`(`id_playlist`),
+  FOREIGN KEY (`id_cancion`) REFERENCES `cancion`(`id_cancion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando estructura para tabla reproducto_p3.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` INT AUTO_INCREMENT PRIMARY KEY,
   `nombre` VARCHAR(50) NOT NULL,
@@ -93,23 +81,29 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `password` VARCHAR(255) NOT NULL,
   `fecha_registro` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `ultimo_acceso` TIMESTAMP NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;2
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando estructura para tabla reproducto_p3.reset_tokens
+CREATE TABLE IF NOT EXISTS `reset_tokens` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `id_usuario` INT NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `expira` DATETIME NOT NULL,
+  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id_usuario`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Limpieza de datos inicial
+DELETE FROM `album`;
+DELETE FROM `artista`;
+DELETE FROM `cancion`;
+DELETE FROM `genero`;
+DELETE FROM `playlist`;
 DELETE FROM `playlist_cancion`;
-/*!40000 ALTER TABLE `playlist_cancion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `playlist_cancion` ENABLE KEYS */;
+DELETE FROM `usuarios`;
+DELETE FROM `reset_tokens`;
+
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
-
-
-
-
-
-
-
-
-
-
-

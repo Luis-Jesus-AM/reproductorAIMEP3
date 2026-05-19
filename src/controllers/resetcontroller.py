@@ -3,7 +3,7 @@ import bcrypt
 from datetime import datetime, timedelta
 import smtplib, ssl
 from email.message import EmailMessage
-from model.databasemodel import Database   # ojo: usa "models", no "model"
+from model.databasemodel import Database   # corregido
 
 class PasswordResetController:
     def __init__(self, db=None):
@@ -12,7 +12,7 @@ class PasswordResetController:
     # ------------------- CREAR TOKEN -------------------
     def crear_token(self, id_usuario):
         token = secrets.token_urlsafe(32)
-        expira = datetime.now() + timedelta(minutes=15)
+        expira = datetime.now() + timedelta(minutes=5)  # corregido a 5 min
         sql = "INSERT INTO reset_tokens (id_usuario, token, expira) VALUES (%s, %s, %s)"
         self.db.execute_query(sql, (id_usuario, token, expira))
         return token
@@ -53,7 +53,7 @@ Haz clic en el siguiente enlace para continuar:
 
 {enlace}
 
-Este enlace expirará en 15 minutos.
+Este enlace expirará en 5 minutos.
 
 Si no solicitaste el cambio, ignora este correo.
 """

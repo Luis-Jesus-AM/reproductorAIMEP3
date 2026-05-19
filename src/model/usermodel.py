@@ -1,7 +1,6 @@
 import bcrypt
-import mysql.connector
 from datetime import datetime
-from .databasemodel import Database
+from model.databasemodel import Database   # corregido
 
 class UsuarioModel:
     def __init__(self):
@@ -24,6 +23,7 @@ class UsuarioModel:
             print(f"Error en consulta: {e}")
             return None
         finally:
+            cursor.close()
             conn.close()
 
     def email_existe(self, email):

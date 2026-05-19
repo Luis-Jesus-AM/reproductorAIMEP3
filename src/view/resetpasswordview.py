@@ -24,21 +24,24 @@ def resetpasswordview(page: ft.Page, reset_controller, token):
     def cambiar_password(e):
         if not nueva.value or not confirmar.value:
             mensaje.value = "⚠️ Completa ambos campos"
+            mensaje.color = "red"
             page.update()
             return
         if nueva.value != confirmar.value:
             mensaje.value = "⚠️ Las contraseñas no coinciden"
+            mensaje.color = "red"
             page.update()
             return
 
         token_data = reset_controller.validar_token(token)
         if not token_data:
             mensaje.value = "❌ Token inválido o expirado"
+            mensaje.color = "red"
             page.update()
             return
 
         reset_controller.actualizar_password(token_data["id_usuario"], nueva.value)
-        mensaje.value = "✅ Contraseña actualizada correctamente"
+        mensaje.value = "✅ Contraseña actualizada correctamente. Ahora puedes iniciar sesión."
         mensaje.color = "green"
         page.update()
         page.go("/")
