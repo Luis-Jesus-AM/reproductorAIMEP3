@@ -17,7 +17,7 @@ def start(page: ft.Page):
 
     # 🔹 Inicializar controladores (solo una vez)
     auth_ctrl = AuthController()
-    reset_ctrl = PasswordResetController(auth_ctrl.user_ctrl.db)
+    reset_ctrl = PasswordResetController()
 
     def route_change(e):
         page.views.clear()

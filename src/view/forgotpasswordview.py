@@ -14,18 +14,20 @@ def forgotpasswordview(page: ft.Page, auth_controller, reset_controller):
     def enviar_reset(e):
         if not email.value:
             mensaje.value = "⚠️ Ingresa tu correo"
+            mensaje.color = "red"
             page.update()
             return
 
         usuario = auth_controller.user_ctrl.obtener_usuario_por_email(email.value)
         if not usuario:
             mensaje.value = "⚠️ Correo no registrado"
+            mensaje.color = "red"
             page.update()
             return
 
         token = reset_controller.crear_token(usuario["id_usuario"])
         reset_controller.enviar_correo_reset(email.value, token)
-        mensaje.value = "✅ Revisa tu correo para restablecer la contraseña"
+        mensaje.value = "✅ Revisa tu correo. El enlace expira en 5 minutos."
         mensaje.color = "green"
         page.update()
 

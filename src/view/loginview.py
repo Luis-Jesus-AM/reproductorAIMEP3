@@ -67,6 +67,12 @@ def LoginView(page: ft.Page, auth_controller):
         on_click=lambda _: page.go("/register"),
         style=ft.ButtonStyle(color=ft.Colors.BLUE_600)
     )
+
+    btn_reset = ft.TextButton(
+        "¿Olvidaste tu contraseña?",
+        on_click=lambda _: page.go("/forgot-password"),
+        style=ft.ButtonStyle(color=ft.Colors.BLUE_600)
+    )
     
     contraseña.on_submit = login_click
 
@@ -94,7 +100,8 @@ def LoginView(page: ft.Page, auth_controller):
                             ft.Container(height=15),
                             ft.Row([iniciar_sesion], alignment=ft.MainAxisAlignment.CENTER),
                             ft.Container(height=10),
-                            btn_registro
+                            btn_registro,
+                            btn_reset
                         ],
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                         spacing=12
