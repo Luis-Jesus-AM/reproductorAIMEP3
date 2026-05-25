@@ -24,6 +24,7 @@ El proyecto busca desarrollar un reproductor de música MP3 que resuelva los pro
 - **Optimización de recursos:** Uso mínimo de memoria RAM y CPU, garantizando un rendimiento fluido incluso en dispositivos de gama baja.
 - **Experiencia libre de publicidad:** Garantizar una reproducción limpia y sin interrupciones.
 - **Gestión eficiente de bibliotecas:** Herramientas simples y claras para organizar grandes colecciones de música local.
+- **Gestión de perfiles de usuario:** Permitir la creación, guardado y eliminación de perfiles personalizados para mejorar la experiencia del usuario.
 
 ---
 
@@ -33,8 +34,23 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 
 - **No incluirá servicios de streaming online:** El reproductor estará diseñado únicamente para música almacenada en el dispositivo del usuario.
 - **No permitirá la descarga ilegal de música:** Se respetarán los derechos de autor y las normativas legales vigentes.
-- **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz
+- **No se integrarán funciones innecesarias:** Se evitarán características que aumenten el consumo de recursos o compliquen la interfaz.
 
+---
+
+# ✨ Funcionalidades Adicionales
+
+Además de las funciones principales del reproductor, también se implementó un sistema básico de gestión de perfiles de usuario con el objetivo de mejorar la personalización y organización dentro de la aplicación.
+
+Las funcionalidades agregadas incluyen:
+
+- **Creación de perfiles:** Permite que cada usuario pueda registrar un perfil personalizado dentro del reproductor.
+- **Guardado de perfiles:** La información del perfil se almacena localmente para conservar configuraciones y preferencias del usuario.
+- **Eliminación de perfiles:** Se incluye la opción de borrar perfiles existentes de manera sencilla y rápida.
+
+Estas funciones complementan la experiencia del usuario al ofrecer una administración más cómoda y personalizada dentro del reproductor de música.
+
+---
 
 # 🎵 Reproductor Académico
 
@@ -45,7 +61,7 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 ## 👤 Información del Estudiante
 
 ### Datos
-Nombre:  _Antonio Marin Luis Jesus_
+Nombre: _Antonio Marin Luis Jesus_
 
 Correo: _23308060610060@cetis61.edu.mx_
 
@@ -61,12 +77,9 @@ N.Control: _23308060610289_
 ---
 
 ## 📚 Información Académica
+
 ### Semestre
 _6° Semestre_
 
 ### Materia
 _Programación_
-
-
-
-
