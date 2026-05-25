@@ -1,4 +1,4 @@
-# Descripción del Problema
+# 🎶 Descripción del Problema 🎶
 
 A pesar de la creciente popularidad de las plataformas de *streaming* musical como Spotify o YouTube Music, existe un grupo significativo de usuarios que aún prefieren mantener y gestionar su propia colección de archivos locales en formato MP3. Esta preferencia se debe a varias razones fundamentales:
 
@@ -16,7 +16,7 @@ En resumen, los usuarios que poseen colecciones locales de música carecen de un
 
 ---
 
-# Objetivos del Proyecto
+# 👽 Objetivos del Proyecto 👽
 
 El proyecto busca desarrollar un reproductor de música MP3 que resuelva los problemas mencionados y se centre en los siguientes aspectos clave:
 
@@ -28,7 +28,7 @@ El proyecto busca desarrollar un reproductor de música MP3 que resuelva los pro
 
 ---
 
-# Alcance y Limitaciones
+#🍥 Alcance y Limitaciones 🍥
 
 El proyecto se enfocará exclusivamente en la reproducción de archivos locales y tendrá las siguientes restricciones:
 
@@ -38,7 +38,7 @@ El proyecto se enfocará exclusivamente en la reproducción de archivos locales 
 
 ---
 
-# ✨ Funcionalidades Adicionales
+# ✨ Funcionalidades Adicionales ✨
 
 Además de las funciones principales del reproductor, también se implementó un sistema básico de gestión de perfiles de usuario con el objetivo de mejorar la personalización y organización dentro de la aplicación.
 
@@ -52,13 +52,13 @@ Estas funciones complementan la experiencia del usuario al ofrecer una administr
 
 ---
 
-# 🎵 Reproductor Académico
+# 🎵 Reproductor Académico 🎵
 
 <img src="https://github.com/user-attachments/assets/bdcbf1b4-4365-4e89-bcb8-ed7f1146ae05" width="250" height="250" alt="Captura del reproductor">
 
 ---
 
-## 👤 Información del Estudiante
+## 👤 Información del Estudiante 👤
 
 ### Datos
 Nombre: _Antonio Marin Luis Jesus_
@@ -76,7 +76,7 @@ N.Control: _23308060610289_
 
 ---
 
-## 📚 Información Académica
+## 📚 Información Académica 📚
 
 ### Semestre
 _6° Semestre_
