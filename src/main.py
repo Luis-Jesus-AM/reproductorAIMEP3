@@ -5,6 +5,7 @@ from view.loginview import LoginView
 from view.registroview import RegisterView  
 from view.forgotpasswordview import forgotpasswordview
 from view.resetpasswordview import resetpasswordview
+from view.reproductorview import  ReproductorView
 
 def start(page: ft.Page):
     

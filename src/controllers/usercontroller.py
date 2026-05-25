@@ -12,7 +12,7 @@ class UserController:
         hashed_pw = bcrypt.hashpw(password.encode("utf-8"), salt).decode("utf-8")
 
         sql = """INSERT INTO usuarios (nombre, apellido, email, password, fecha_registro)
-                 VALUES (%s, %s, %s, %s, %s)"""
+                VALUES (%s, %s, %s, %s, %s)"""
         return self.db.execute_query(sql, (nombre, apellido, email, hashed_pw, datetime.now()))
 
     def obtener_usuario_por_id(self, id_usuario):
@@ -82,7 +82,11 @@ class AuthController:
             "fecha_registro": user_db_actualizado["fecha_registro"],
             "ultimo_acceso": user_db_actualizado["ultimo_acceso"],
         }
+        if page:
+            page.go("/reproductor")
+
         return user, "Login exitoso"
+        
 
     def registrar(self, usuario_data):
         if self.user_ctrl.obtener_usuario_por_email(usuario_data.email):
