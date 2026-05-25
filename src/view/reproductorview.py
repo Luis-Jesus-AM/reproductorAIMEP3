@@ -1,21 +1,13 @@
 import flet as ft
 
 def ReproductorView(page: ft.Page):
-    # Valores de diseño por defecto para simular el perfil
     nombre_usuario = "Usuario"
     inicial_usuario = "U"
 
-    # --- LÓGICA INTERACTIVA DEL DISEÑO ---
-    
-    # Acción visual al confirmar la eliminación
     def confirmar_eliminar_click(e):
         dialogo_confirmacion.open = False
         page.update()
-        
-        # Simula la expulsión al Login de forma visual
         page.go("/")
-        
-        # Mensaje flotante estético
         page.snack_bar = ft.SnackBar(
             content=ft.Text("🔥 Cuenta eliminada (Simulación de diseño)"), 
             bgcolor=ft.Colors.RED_400
@@ -23,13 +15,16 @@ def ReproductorView(page: ft.Page):
         page.snack_bar.open = True
         page.update()
 
-    # Cuadro de diálogo emergente (Diseño de Advertencia)
+    def cancelar_eliminar_click(e):
+        dialogo_confirmacion.open = False
+        page.update()
+
     dialogo_confirmacion = ft.AlertDialog(
         modal=True,
         title=ft.Text("⚠ ¿Eliminar tu cuenta?"),
         content=ft.Text("Esta acción es permanente. Se borrarán todos tus datos de usuario del sistema."),
         actions=[
-            ft.TextButton("Cancelar", on_click=lambda _: setattr(dialogo_confirmacion, "open", False) or page.update()),
+            ft.TextButton("Cancelar", on_click=cancelar_eliminar_click),
             ft.TextButton("Sí, eliminar", icon=ft.Icons.DELETE_FOREVER, icon_color="red", on_click=confirmar_eliminar_click),
         ],
         actions_alignment=ft.MainAxisAlignment.END,
@@ -37,15 +32,10 @@ def ReproductorView(page: ft.Page):
 
     def menu_item_click(e):
         if e.control.data == "eliminar":
-            # Desplegar el modal de confirmación en la interfaz
             page.dialog = dialogo_confirmacion
             dialogo_confirmacion.open = True
             page.update()
 
-
-    # --- COMPONENTES DEL REPRODUCTOR (DISEÑO) ---
-
-    # 1. Portada del Álbum
     portada = ft.Container(
         content=ft.Icon(ft.Icons.MUSIC_NOTE, size=80, color="#ffffff"),
         gradient=ft.LinearGradient(
@@ -58,11 +48,9 @@ def ReproductorView(page: ft.Page):
         border_radius=30,
     )
 
-    # 2. Información de la Canción
     titulo = ft.Text("Título de la Canción", size=24, weight=ft.FontWeight.BOLD, color="#ffffff")
     artista = ft.Text("Nombre del Artista", size=16, color="#b3b3b3")
 
-    # 3. Barra de Progreso (Slider)
     progreso = ft.Slider(
         min=0, max=100, value=30,
         active_color="#fe5f75",
@@ -78,7 +66,6 @@ def ReproductorView(page: ft.Page):
         width=300
     )
 
-    # 4. Botones de Control
     btn_prev = ft.IconButton(icon=ft.Icons.SKIP_PREVIOUS_ROUNDED, icon_color="#ffffff", icon_size=40)
     btn_play = ft.Container(
         content=ft.IconButton(icon=ft.Icons.PLAY_ARROW_ROUNDED, icon_color="#121212", icon_size=40),
@@ -94,7 +81,6 @@ def ReproductorView(page: ft.Page):
         spacing=20
     )
 
-    # 5. Tarjeta contenedora
     reproductor_tarjeta = ft.Container(
         content=ft.Column(
             controls=[
@@ -115,7 +101,6 @@ def ReproductorView(page: ft.Page):
         border_radius=35,
     )
 
-    # --- APARTADO VISUAL DE PERFIL (🚨 Corregido usando 'content' en los ítems) ---
     perfil_menu = ft.PopupMenuButton(
         content=ft.CircleAvatar(
             content=ft.Text(inicial_usuario, color="white", weight="bold"),
@@ -146,7 +131,10 @@ def ReproductorView(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         bgcolor="#121212",
         appbar=ft.AppBar(
-            leading=ft.Container(content=perfil_menu, padding=ft.padding.only(left=15)),
+            leading=ft.Container(
+                content=perfil_menu, 
+                padding=ft.Padding(left=15, top=5, right=0, bottom=0)
+            ),
             title=ft.Text("Mi Reproductor"), 
             bgcolor="#1e1e1e",
             center_title=True
