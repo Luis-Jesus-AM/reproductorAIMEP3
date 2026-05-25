@@ -5,7 +5,7 @@ from view.loginview import LoginView
 from view.registroview import RegisterView  
 from view.forgotpasswordview import forgotpasswordview
 from view.resetpasswordview import resetpasswordview
-from view.reproductorview import  ReproductorView
+from view.reproductorview import ReproductorView # Importación perfecta
 
 def start(page: ft.Page):
     
@@ -32,11 +32,20 @@ def start(page: ft.Page):
         elif page.route.startswith("/reset-password"):
             token = page.route.split("token=")[-1] if "token=" in page.route else None
             page.views.append(resetpasswordview(page, reset_ctrl, token))
+        
+        # 🚨 ¡EL BLOQUE QUE FALTABA AQUÍ! 🚨
+        elif page.route == "/reproductor":
+            page.views.append(ReproductorView(page))
+            
         else:
+            # 🚨 CORRECCIÓN AQUÍ: Cambiamos la ruta estática "/" por page.route 
+            # Esto evita que Flet destruya la vista y te tire el error de lista vacía.
             page.views.append(
-                ft.View("/", [
-                    ft.Text("⚠️ Error: Ruta no encontrada", color="red", size=18)
-                ])
+                ft.View(page.route, [
+                    ft.Text(f"⚠️ Error: Ruta '{page.route}' no encontrada", color="red", size=18)
+                ],
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                vertical_alignment=ft.MainAxisAlignment.CENTER)
             )
 
         page.update()
