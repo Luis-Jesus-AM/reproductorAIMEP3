@@ -28,7 +28,7 @@ El proyecto busca desarrollar un reproductor de música MP3 que resuelva los pro
 
 ---
 
-#🍥 Alcance y Limitaciones 🍥
+# 🍥 Alcance y Limitaciones 🍥
 
 El proyecto se enfocará exclusivamente en la reproducción de archivos locales y tendrá las siguientes restricciones:
 
