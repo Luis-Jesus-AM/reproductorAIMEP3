@@ -82,9 +82,6 @@ class AuthController:
             "fecha_registro": user_db_actualizado["fecha_registro"],
             "ultimo_acceso": user_db_actualizado["ultimo_acceso"],
         }
-        if page:
-            page.go("/reproductor")
-
         return user, "Login exitoso"
         
 

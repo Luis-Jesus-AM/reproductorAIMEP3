@@ -108,9 +108,12 @@ def ReproductorView(page: ft.Page):
             radius=18
         ),
         items=[
-            ft.PopupMenuItem(
-                content=ft.Text(f"Perfil: {nombre_usuario}"), 
-                disabled=True
+                        ft.PopupMenuItem(
+                content=ft.Row([
+                    ft.Icon(ft.Icons.PERSON),
+                    ft.Text("Ver Perfil")
+                ]),
+                on_click=lambda e: page.go("/perfil")
             ),
             ft.PopupMenuItem(ft.Divider()),
             ft.PopupMenuItem(

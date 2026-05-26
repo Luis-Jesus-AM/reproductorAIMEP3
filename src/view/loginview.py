@@ -43,7 +43,7 @@ def LoginView(page: ft.Page, auth_controller):
         user, msg = auth_controller.login(correo.value, contraseña.value, page)
         
         if user:
-            page.user_data = user
+            page.session.set("user", user)
             mostrar_snackbar("✅ Sesión iniciada correctamente", ft.Colors.GREEN)
             
             # 2. 🚨 ¡CORREGIDO AQUÍ! 
