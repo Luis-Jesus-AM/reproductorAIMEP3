@@ -1,6 +1,6 @@
 import bcrypt
 from datetime import datetime
-from model.databasemodel import Database   # corregido
+from model.databasemodel import Database  
 
 class UsuarioModel:
     def __init__(self):
@@ -36,9 +36,9 @@ class UsuarioModel:
         hashed_pw = bcrypt.hashpw(usuario_data.password.encode("utf-8"), salt).decode("utf-8")
 
         query = """INSERT INTO usuarios (nombre, apellido, email, password, fecha_registro)
-                   VALUES (%s, %s, %s, %s, %s)"""
+                VALUES (%s, %s, %s, %s, %s)"""
         params = (usuario_data.nombre, usuario_data.apellido,
-                  usuario_data.email, hashed_pw, datetime.now())
+                usuario_data.email, hashed_pw, datetime.now())
         return self._execute_query(query, params)
 
     def validar_login(self, email, password):

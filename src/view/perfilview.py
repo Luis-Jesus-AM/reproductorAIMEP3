@@ -2,12 +2,10 @@ import flet as ft
 
 def PerfilView(page: ft.Page):
 
-    # =========================
-    # USUARIO DESDE SESIÓN
-    # =========================
+
     user = page.session.get("user")
 
-    # Si no hay sesión, regresa al login
+
     if not user:
         page.go("/")
         return ft.View(route="/perfil")
@@ -23,9 +21,7 @@ def PerfilView(page: ft.Page):
         "After Dark"
     ]
 
-    # =========================
-    # FUNCIONES
-    # =========================
+
     def mostrar_snackbar(texto, color=ft.Colors.GREEN):
         page.snack_bar = ft.SnackBar(
             content=ft.Text(texto),
@@ -42,9 +38,7 @@ def PerfilView(page: ft.Page):
         page.go("/")
         mostrar_snackbar("👋 Sesión cerrada", ft.Colors.ORANGE)
 
-    # =========================
-    # AVATAR
-    # =========================
+
     avatar = ft.Container(
         content=ft.Text(
             inicial_usuario,
@@ -76,9 +70,7 @@ def PerfilView(page: ft.Page):
         color="#b3b3b3"
     )
 
-    # =========================
-    # FAVORITAS
-    # =========================
+
     favoritas_lista = ft.Column(
         spacing=10,
         controls=[
@@ -97,9 +89,7 @@ def PerfilView(page: ft.Page):
         ]
     )
 
-    # =========================
-    # BOTONES
-    # =========================
+
     botones = ft.Row(
         alignment=ft.MainAxisAlignment.CENTER,
         spacing=15,
@@ -130,9 +120,6 @@ def PerfilView(page: ft.Page):
         ]
     )
 
-    # =========================
-    # CARD PRINCIPAL
-    # =========================
     perfil_card = ft.Container(
         width=420,
         padding=30,
@@ -172,9 +159,7 @@ def PerfilView(page: ft.Page):
         )
     )
 
-    # =========================
-    # VIEW
-    # =========================
+
     return ft.View(
         route="/perfil",
         bgcolor="#121212",

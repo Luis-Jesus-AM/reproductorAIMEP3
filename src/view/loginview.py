@@ -39,16 +39,14 @@ def LoginView(page: ft.Page, auth_controller):
             page.update()
             return
         
-        # 1. Llamamos al controlador pasándole 'page'
+
         user, msg = auth_controller.login(correo.value, contraseña.value, page)
         
         if user:
             page.session.set("user", user)
             mostrar_snackbar("✅ Sesión iniciada correctamente", ft.Colors.GREEN)
             
-            # 2. 🚨 ¡CORREGIDO AQUÍ! 
-            # Cambiamos /dashboard por /reproductor para que coincida con tu nueva vista.
-            # (Nota: Si ya pusiste page.go en el AuthController, puedes borrar o comentar esta línea de abajo)
+
             page.go("/reproductor")
         else:
             mensaje.value = msg
@@ -81,7 +79,7 @@ def LoginView(page: ft.Page, auth_controller):
     
     contraseña.on_submit = login_click
 
-    # Diseño con tarjeta central
+
     return ft.View(
         route="/",
         vertical_alignment=ft.MainAxisAlignment.CENTER,

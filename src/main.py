@@ -13,9 +13,7 @@ from view.perfilview import PerfilView
 
 def start(page: ft.Page):
 
-    # =========================
-    # CONFIGURACIÓN GENERAL
-    # =========================
+
     page.title = "Reproductor MP3"
     page.window_width = 450
     page.window_height = 700
@@ -26,38 +24,31 @@ def start(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
-    # =========================
-    # CONTROLADORES
-    # =========================
+
     auth_ctrl = AuthController()
     reset_ctrl = PasswordResetController()
 
-    # =========================
-    # ROUTER
-    # =========================
+
     def route_change(e):
 
         page.views.clear()
 
-        # LOGIN
         if page.route == "/":
             page.views.append(
                 LoginView(page, auth_ctrl)
             )
 
-        # REGISTRO
+
         elif page.route == "/register":
             page.views.append(
                 RegisterView(page, auth_ctrl)
             )
 
-        # RECUPERAR PASSWORD
         elif page.route == "/forgot-password":
             page.views.append(
                 forgotpasswordview(page, auth_ctrl, reset_ctrl)
             )
 
-        # RESET PASSWORD
         elif page.route.startswith("/reset-password"):
 
             token = (
@@ -70,19 +61,19 @@ def start(page: ft.Page):
                 resetpasswordview(page, reset_ctrl, token)
             )
 
-        # REPRODUCTOR
+
         elif page.route == "/reproductor":
             page.views.append(
                 ReproductorView(page)
             )
 
-        # PERFIL
+
         elif page.route == "/perfil":
             page.views.append(
                 PerfilView(page)
             )
 
-        # 404
+
         else:
             page.views.append(
                 ft.View(
@@ -124,9 +115,7 @@ def start(page: ft.Page):
 
         page.update()
 
-    # =========================
-    # BOTÓN ATRÁS
-    # =========================
+
     def view_pop(e):
 
         if len(page.views) > 1:
@@ -137,15 +126,11 @@ def start(page: ft.Page):
 
             page.go(top_view.route)
 
-    # =========================
-    # EVENTOS
-    # =========================
+
     page.on_route_change = route_change
     page.on_view_pop = view_pop
 
-    # =========================
-    # INICIO
-    # =========================
+
     if page.route == "/":
         route_change(None)
     else:

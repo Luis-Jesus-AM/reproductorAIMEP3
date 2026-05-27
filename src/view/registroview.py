@@ -1,6 +1,6 @@
 import flet as ft
 import re
-from model.schemasmodel import UsuarioSchema   # corregido
+from model.schemasmodel import UsuarioSchema  
 
 def RegisterView(page: ft.Page, auth_controller):
     
