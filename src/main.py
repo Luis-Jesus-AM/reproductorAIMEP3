@@ -9,14 +9,14 @@ from view.forgotpasswordview import forgotpasswordview
 from view.resetpasswordview import resetpasswordview
 from view.reproductorview import ReproductorView
 from view.perfilview import PerfilView
-
+from view.editarperfilview import EditarPerfilView
 
 def start(page: ft.Page):
 
 
     page.title = "Reproductor MP3"
-    page.window_width = 450
-    page.window_height = 700
+    page.window.width = 450
+    page.window.height = 700
     page.bgcolor = "#121212"
 
     page.theme_mode = ft.ThemeMode.DARK
@@ -71,6 +71,13 @@ def start(page: ft.Page):
         elif page.route == "/perfil":
             page.views.append(
                 PerfilView(page)
+            )
+            
+        elif page.route == "/editar-perfil":
+            # Corrección: Se pasa el usuario desde la sesión para el __init__
+            usuario = page.session.get("user")
+            page.views.append(
+                EditarPerfilView(page, usuario)
             )
 
 

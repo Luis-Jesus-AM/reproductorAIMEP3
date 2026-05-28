@@ -30,8 +30,9 @@ def PerfilView(page: ft.Page):
         page.snack_bar.open = True
         page.update()
 
+    # --- CORRECCIÓN AQUÍ: Navegación real ---
     def editar_perfil(e):
-        mostrar_snackbar("✏️ Editar perfil próximamente")
+        page.go("/editar-perfil")
 
     def cerrar_sesion(e):
         page.session.remove("user")

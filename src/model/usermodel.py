@@ -65,3 +65,7 @@ class UsuarioModel:
     def eliminar(self, id_usuario):
         query = "DELETE FROM usuarios WHERE id_usuario=%s"
         return self._execute_query(query, (id_usuario,))
+    
+    def actualizar_perfil(self, id_usuario, nombre, apellido, email):
+        query = "UPDATE usuarios SET nombre=%s, apellido=%s, email=%s WHERE id_usuario=%s"
+        return self._execute_query(query, (nombre, apellido, email, id_usuario))
