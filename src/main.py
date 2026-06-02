@@ -58,7 +58,7 @@ def start(page: ft.Page):
             )
 
             page.views.append(
-                resetpasswordview(page, reset_ctrl, token)
+                resetpasswordview(page, reset_ctrl)
             )
 
 

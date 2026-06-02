@@ -1,17 +1,7 @@
 import bcrypt
+import os
 from datetime import datetime
-from model.databasemodel import Database
-
-
-def actualizar_usuario(self, id_usuario, nombre=None, apellido=None, email=None, password=None):
-        # ... (tu lógica de campos)
-        
-        # AGREGA ESTO:
-        import os
-        print(f"Ruta de trabajo actual: {os.getcwd()}")
-        # Si usas sqlite, verifica la ruta de conexión en Database()
-        
-        # ... resto del código
+from model.databasemodel import Database 
 
 class UserController:
     def __init__(self):
@@ -59,19 +49,15 @@ class UserController:
             campos.append("password=%s")
             valores.append(hashed_pw)
 
-
-            
-
         if campos:
             sql = f"UPDATE usuarios SET {', '.join(campos)} WHERE id_usuario=%s"
-            valores.append(id_usuario) 
-
+            valores.append(id_usuario)
+            
+            print(f"DEBUG: Actualizando ID {id_usuario} | SQL: {sql} | Ruta: {os.getcwd()}")
+            
             resultado = self.db.execute_query(sql, tuple(valores))
-
-
             return resultado is not False
-            # El execute_query DEBE realizar conn.commit() internamente
-           
+            
         return False
 
     def eliminar_usuario(self, id_usuario):

@@ -1,6 +1,6 @@
 import flet as ft
 
-def resetpasswordview(page: ft.Page, reset_controller, token):
+def resetpasswordview(page: ft.Page, reset_controller):
     nueva = ft.TextField(
         label="Nueva contraseña",
         prefix_icon=ft.Icons.LOCK,
@@ -22,29 +22,37 @@ def resetpasswordview(page: ft.Page, reset_controller, token):
     mensaje = ft.Text("", color="red")
 
     def cambiar_password(e):
+        # 1. Validaciones básicas
         if not nueva.value or not confirmar.value:
             mensaje.value = "⚠️ Completa ambos campos"
-            mensaje.color = "red"
             page.update()
             return
         if nueva.value != confirmar.value:
             mensaje.value = "⚠️ Las contraseñas no coinciden"
-            mensaje.color = "red"
             page.update()
             return
 
-        token_data = reset_controller.validar_token(token)
-        if not token_data:
-            mensaje.value = "❌ Token inválido o expirado"
-            mensaje.color = "red"
+        # 2. Obtenemos el ID del usuario guardado en la sesión
+        id_usuario = page.session.get("id_usuario")
+        
+        if not id_usuario:
+            mensaje.value = "❌ Sesión expirada. Vuelve a intentar."
             page.update()
             return
 
-        reset_controller.actualizar_password(token_data["id_usuario"], nueva.value)
-        mensaje.value = "✅ Contraseña actualizada correctamente. Ahora puedes iniciar sesión."
-        mensaje.color = "green"
-        page.update()
-        page.go("/")
+        # 3. Actualizamos la contraseña
+        # Ya no necesitamos validar el token aquí porque ya se validó en la vista anterior
+        if reset_controller.actualizar_password(id_usuario, nueva.value):
+            mensaje.value = "✅ Contraseña actualizada. Redirigiendo..."
+            mensaje.color = "green"
+            page.update()
+            
+            # Limpiamos sesión
+            page.session.clear()
+            page.go("/")
+        else:
+            mensaje.value = "❌ Error al actualizar la base de datos"
+            page.update()
 
     btn_cambiar = ft.ElevatedButton("Cambiar contraseña", on_click=cambiar_password)
 
